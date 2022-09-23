@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+      mongo:
+        image: mongo:latest
+        restart: always
+        container_name: mongodb
+        hostname: host-mongo
+        ports:  
+            - '27017:27017'
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: ${ROOT_USERNAME}
+          MONGO_INITDB_ROOT_PASSWORD: ${ROOT_PASSWORD}
+        volumes:
+            - ./data:/data/db #Guarda datos de la db
+            - ./data/log:/var/log/mongodb #Guarda logs de la db
